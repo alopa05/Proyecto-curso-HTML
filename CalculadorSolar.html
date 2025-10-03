@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.2">
+  <title>Calculador Solar</title>
+  <link rel="stylesheet" href="css/MisEstilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 20px;
+      font-size: 16px;
+    }
+    label, select, input {
+      display: block;
+      margin: 10px 0;
+    }
+    #resultado {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: black;
+      color:yellow;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      min-height: 120px;
+      white-space: pre-wrap;
+      font-size: 15px;
+    }
+    
+  
+  </style>
+</head>
+<header> 
+       <div class="linea-negra"></div>
+    <h1>&nbsp;&nbsp;&nbsp Mi Página Solar - Calculador Solar</h1>
+  <div class="linea-negra"></div> 
+    </header>
+<BODY>
+  
+    <h4>USO DEL CALCULADOR</h4>
+
+  <p>
+  Esta aplicación te permite calcular de manera aproximada la cantidad de paneles solares
+  necesarios para una coordendada tomada como genérica asumida en el centro geográfico de 
+  cada provincia. Se contemplan dos tipos de instalación: 
+  </p>
+
+ <ul>
+  <li><strong>Sobre piso (parque solar):</strong> los paneles se instalan en el suelo con orientación
+    hacia el norte. La inclinación óptima de los paneles se considera en los cálculos según cada
+    provincia. En la superficie a ocupar por los paneles se tiene en cuenta la separación que debe de
+    mantenerse entre filas para que la sombra que proyecta una fila sobre su inmediata posterior, 
+  no afecte significativamente la generación. La siguiente imagen muestra un ejemplo de este tipo de
+  instalación:
+  <center> <img src="img/piso.jpg" width="1000"> </center> </li>
+
+  <li><strong>Sobre techo:</strong> cuando se instalan paneles en el techo la orientación de este puede
+    no ser la óptima (hacia el norte), y la inclinación tampoco ser la óptima (depende de cada provincia).
+    Por lo tanto, para calcular sobre techo se consideraron valores promedio de desorientación e inclinación
+    resultado de lo mayoritariamente visto estadísticamente en la práctica de instalaciones sobre techo.
+    La siguiente imagen muestra un ejemplo de este tipo de instalación:
+    <center><img src="img/techo.jpg" width="1000"></center></li>
+  </ul>
+
+<p>Según los datos con los que se cuente, será la información que suministre el calculador como resultado. 
+  Los datos involucrados son los siguientes:
+</p>
+<ul>
+  <li><strong>Cantidad de paneles:</strong> se consideran paneles solares fotovoltáicos de aprox. 25% de 
+    rendimiento. Se trata de la cantidad de paneles necesaria para obtener el resultado solicitado"</li>
+  <li><strong>Superficie:</strong> es la superficie que ocuparán los paneles. En el caso de instalación sobre
+    piso, se incluye la separación entre filas por tema sombras. En ambos casos sobre piso y techo se incluye
+    espacio necesario para poder efectuar la instalación (tendido de cables, fijación de soportes, etc.).</li>
+  <li><strong>Energía:</strong> es la energía promedio acumulada en MWh (Mega Watts Hora) a lo largo del año producida
+    por el generador solar. </li>
+  <li><strong>Potencia:</strong> la potencia que entrega el generador depende del mes del año y de la hora del día.
+    Se calcula la potencia en la hora de mayor insolación (mediodía) para el mes de mayor insolación
+    (tipicamente verano) y el mes de menor insolación (típicamente invierno). Estos meses NO son los mismos
+    en todas las provincias. </li>
+   <li><strong>Costo:</strong> El costo es aproximado,  Los costos incluyen supervisión, alojamiento, logística, 
+    fletes, etc. por lo que resulta más cercano a la realidad para instalaciones que requieran más de 50
+    paneles solares.</li> 
+</ul>
+
+<div class="linea-negra"></div>
+
+
+  <label for="provincia">Seleccione una provincia:</label>
+  <select id="provincia">
+    <option value="">-- Seleccione --</option>
+    <option value="Buenos Aires">Buenos Aires</option>
+    <option value="Catamarca">Catamarca</option>
+    <option value="Chaco">Chaco</option>
+    <option value="Chubut">Chubut</option>
+    <option value="Córdoba">Córdoba</option>
+    <option value="Corrientes">Corrientes</option>
+    <option value="Entre Ríos">Entre Ríos</option>
+    <option value="Formosa">Formosa</option>
+    <option value="Jujuy">Jujuy</option>
+    <option value="La Pampa">La Pampa</option>
+    <option value="La Rioja">La Rioja</option>
+    <option value="Mendoza">Mendoza</option>
+    <option value="Misiones">Misiones</option>
+    <option value="Neuquén">Neuquén</option>
+    <option value="Río Negro">Río Negro</option>
+    <option value="Salta">Salta</option>
+    <option value="San Juan">San Juan</option>
+    <option value="San Luis">San Luis</option>
+    <option value="Santa Cruz">Santa Cruz</option>
+    <option value="Santa Fe">Santa Fe</option>
+    <option value="Santiago del Estero">Santiago del Estero</option>
+    <option value="Tierra del Fuego">Tierra del Fuego</option>
+    <option value="Tucumán">Tucumán</option>
+  </select>
+
+  <label for="instalacion">Tipo de instalación:</label>
+  <select id="instalacion">
+    <option value="">-- Seleccione --</option>
+    <option value="p">Piso - parque solar</option>
+    <option value="t">Techo - coplanar</option>
+  </select>
+
+  <label for="datoEntrada">¿Cuál es el dato suministrado por el cliente?</label>
+  <select id="datoEntrada">
+    <option value="">-- Seleccione --</option>
+    <option value="a">Superficie disponible en m²</option>
+    <option value="b">Energía en MWh anual</option>
+    <option value="c">Potencia al mediodía en kW</option>
+  </select>
+
+  <label for="valorEntrada">Ingrese el valor:</label>
+  <input type="text" id="valorEntrada" inputmode="numeric" pattern="[0-9]*" placeholder="Ingrese un número y presione Enter" />
+
+
+  <div id="resultado"></div>
+
+  <script>
+    const provincias = {
+      "Buenos Aires": { e_anual_p:1605,e_anual_t:1491,coef_p_t:0.929,supp_prq:4.50,coef_vrn:0.691,mes_vrn:"febrero",coef_nvrn:0.485,mes_nvrn:"junio" },
+      "Catamarca": { e_anual_p:1989,e_anual_t:1951,coef_p_t:0.981,supp_prq:3.80,coef_vrn:0.890,mes_vrn:"setiembre",coef_nvrn:0.700,mes_nvrn:"enero" },
+      "Chaco": { e_anual_p:1599,e_anual_t:1538,coef_p_t:0.962,supp_prq:3.67,coef_vrn:0.650,mes_vrn:"enero",coef_nvrn:0.475,mes_nvrn:"junio" },
+      "Chubut": { e_anual_p:1623,e_anual_t:1456,coef_p_t:0.897,supp_prq:5.92,coef_vrn:0.727,mes_vrn:"enero",coef_nvrn:0.503,mes_nvrn:"julio" },
+      "Córdoba": { e_anual_p:1639,e_anual_t:1540,coef_p_t:0.94,supp_prq:4.06,coef_vrn:0.677,mes_vrn:"setiembre",coef_nvrn:0.529,mes_nvrn:"mayo" },
+      "Corrientes": { e_anual_p:1593,e_anual_t:1532,coef_p_t:0.962,supp_prq:3.77,coef_vrn:0.655,mes_vrn:"febrero",coef_nvrn:0.476,mes_nvrn:"junio" },
+      "Entre Ríos": { e_anual_p:1614,e_anual_t:1525,coef_p_t:0.945,supp_prq:4.11,coef_vrn:0.671,mes_vrn:"noviembre",coef_nvrn:0.491,mes_nvrn:"junio" },
+      "Formosa": { e_anual_p:1558,e_anual_t:1514,coef_p_t:0.972,supp_prq:3.49,coef_vrn:0.635,mes_vrn:"enero",coef_nvrn:0.461,mes_nvrn:"junio" },
+      "Jujuy": { e_anual_p:2234,e_anual_t:2151,coef_p_t:0.963,supp_prq:3.54,coef_vrn:0.904,mes_vrn:"setiembre",coef_nvrn:0.710,mes_nvrn:"enero" },
+      "La Pampa": { e_anual_p:1669,e_anual_t:1546,coef_p_t:0.926,supp_prq:4.57,coef_vrn:0.739,mes_vrn:"febrero",coef_nvrn:0.489,mes_nvrn:"junio" },
+      "La Rioja": { e_anual_p:1922,e_anual_t:1812,coef_p_t:3.93,supp_prq:0.943,coef_vrn:0.795,mes_vrn:"setiembre",coef_nvrn:0.674,mes_nvrn:"mayo" },
+      "Mendoza": { e_anual_p:1803,e_anual_t:1677,coef_p_t:0.93,supp_prq:4.34,coef_vrn:0.757,mes_vrn:"noviembre",coef_nvrn:0.592,mes_nvrn:"junio" },
+      "Misiones": { e_anual_p:1499,e_anual_t:1431,coef_p_t:0.955,supp_prq:3.62,coef_vrn:0.621,mes_vrn:"febrero",coef_nvrn:0.481,mes_nvrn:"junio" },
+      "Neuquén": { e_anual_p:1792,e_anual_t:1651,coef_p_t:0.921,supp_prq:4.73,coef_vrn:0.786,mes_vrn:"enero",coef_nvrn:0.517,mes_nvrn:"junio" },
+      "Río Negro": { e_anual_p:1699,e_anual_t:1451,coef_p_t:0.854,supp_prq:5.09,coef_vrn:0.755,mes_vrn:"enero",coef_nvrn:0.486,mes_nvrn:"junio" },
+      "Salta": { e_anual_p:1530,e_anual_t:1491,coef_p_t:0.975,supp_prq:3.39,coef_vrn:0.654,mes_vrn:"setiembre",coef_nvrn:0.592,mes_nvrn:"diciembre" },
+      "San Juan": { e_anual_p:1898,e_anual_t:1798,coef_p_t:0.947,supp_prq:4.06,coef_vrn:0.780,mes_vrn:"noviembre",coef_nvrn:0.643,mes_nvrn:"mayo" },
+      "San Luis": { e_anual_p:1706,e_anual_t:1587,coef_p_t:0.93,supp_prq:4.21,coef_vrn:0.704,mes_vrn:"enero",coef_nvrn:0.555,mes_nvrn:"mayo" },
+      "Santa Cruz": { e_anual_p:1437,e_anual_t:1286,coef_p_t:0.895,supp_prq:7.37,coef_vrn:0.671,mes_vrn:"octubre",coef_nvrn:0.325,mes_nvrn:"junio" },
+      "Santa Fe": { e_anual_p:1626,e_anual_t:1552,coef_p_t:0.954,supp_prq:3.90,coef_vrn:0.655,mes_vrn:"noviembre",coef_nvrn:0.484,mes_nvrn:"junio" },
+      "Santiago del Estero": { e_anual_p:1570,e_anual_t:1509,coef_p_t:0.961,supp_prq:3.64,coef_vrn:0.678,mes_vrn:"setiembre",coef_nvrn:0.609,mes_nvrn:"diciembre" },
+      "Tierra del Fuego": { e_anual_p:1178,e_anual_t:1062,coef_p_t:0.902,supp_prq:10.03,coef_vrn:0.591,mes_vrn:"octubre",coef_nvrn:0.205,mes_nvrn:"junio" },
+      "Tucumán": { e_anual_p:1440,e_anual_t:1405,coef_p_t:0.976,supp_prq:3.67,coef_vrn:0.658,mes_vrn:"setiembre",coef_nvrn:0.449,mes_nvrn:"mayo" }
+    };
+
+    document.getElementById("valorEntrada").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        const provincia = document.getElementById("provincia").value;
+        const instalacion = document.getElementById("instalacion").value;
+        const dato = document.getElementById("datoEntrada").value;
+        const valor = document.getElementById("valorEntrada").value.trim();
+
+        const resultado = document.getElementById("resultado");
+        resultado.innerHTML = "";
+
+        if (!provincia || !instalacion || !dato) {
+          resultado.innerHTML = "<span style='color:red;'>Por favor complete todas las opciones.</span>";
+          return;
+        }
+        if (isNaN(valor) || parseFloat(valor) <= 0) {
+          resultado.innerHTML = "<span style='color:red;'>Ingrese un valor numérico positivo.</span>";
+          return;
+        }
+
+        const datos = provincias[provincia];
+        const textoInst = instalacion === "p" ? "piso" : "techo";
+
+        if (dato === "a") {
+          const sup = parseFloat(valor), supp_i = sup / 1.1;
+          const cant = instalacion === "p"
+            ? Math.floor(supp_i / datos.supp_prq)
+            : Math.floor(supp_i / 2.58);
+          const e_anual = instalacion === "p" ? datos.e_anual_p : datos.e_anual_t;
+          const kWp = cant * 0.595 * 0.95;
+          let kW_v = Math.floor(kWp * datos.coef_vrn);
+          let kW_nv = Math.floor(kWp * datos.coef_nvrn);
+          if (instalacion === "t") {
+            kW_v = Math.floor(kW_v * datos.coef_p_t);
+            kW_nv = Math.floor(kW_nv * datos.coef_p_t);
+          }
+          const MWh = Math.floor(kWp * e_anual / 1000);
+          const costo = 296.147744 * cant + 15997.7781;
+
+          resultado.innerHTML = `
+Provincia: ${provincia}
+Tipo de instalación: ${textoInst}
+Superficie disponible: ${sup} m²
+Cantidad de paneles: ${cant}
+Potencia al mediodía en ${datos.mes_vrn}: ${kW_v} kW
+Potencia al mediodía en ${datos.mes_nvrn}: ${kW_nv} kW
+Energía anual estimada: ${MWh} MWh
+Costo estimado: USD ${costo.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+          `;
+
+        } else if (dato === "b") {
+          const MWh = parseFloat(valor);
+          const e_anual = instalacion === "p" ? datos.e_anual_p : datos.e_anual_t;
+          let kWp = MWh * 1000 / e_anual;
+          let kW_v = Math.floor(kWp * datos.coef_vrn);
+          let kW_nv = Math.floor(kWp * datos.coef_nvrn);
+          if (instalacion === "t") {
+            kW_v = Math.floor(kW_v * datos.coef_p_t);
+            kW_nv = Math.floor(kW_nv * datos.coef_p_t);
+          }
+          const cant = Math.ceil(kWp / (0.595 * 0.95));
+          const supp_p = instalacion === "p" ? datos.supp_prq : 2.58;
+          const superficie = supp_p * 1.1 * cant;
+          const costo = 296.147744 * cant + 15997.7781;
+
+          resultado.innerHTML = `
+Provincia: ${provincia}
+Tipo de instalación: ${textoInst}
+Superficie necesaria: ${superficie.toFixed(0)} m²
+Cantidad de paneles: ${cant}
+Potencia al mediodía en ${datos.mes_vrn}: ${kW_v} kW
+Potencia al mediodía en ${datos.mes_nvrn}: ${kW_nv} kW
+Energía anual estimada: ${MWh} MWh
+Costo estimado: USD ${costo.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+          `;
+        } else if (dato === "c") {
+          const kW = parseFloat(valor);
+          let kWp = kW / datos.coef_vrn; // Paso 1: convertir a kWp suponiendo verano al mediodía
+          const e_anual = instalacion === "p" ? datos.e_anual_p : datos.e_anual_t;
+
+          const MWh = Math.floor(kWp * e_anual / 1000); // MWh generados anuales
+          kWp = kWp / 0.95; // compensar pérdidas
+          let kWp_techo = kWp;
+          let superficie, supp_i;
+
+          if (instalacion === "t") {
+            kWp_techo = kWp / datos.coef_p_t;
+            supp_i = 2.58;
+          } else {
+            supp_i = datos.supp_prq;
+          }
+
+          const cant = Math.ceil(kWp_techo / 0.595); // cantidad de paneles
+          superficie = Math.ceil(supp_i * cant * 1.1); // superficie con acceso
+
+          const kW_v = Math.floor(kWp * datos.coef_vrn); // potencia en mes de verano
+          const kW_nv = Math.floor(kW * datos.coef_nvrn / datos.coef_vrn); // potencia en mes de menor producción
+          const costo = 296.147744 * cant + 15997.7781;
+
+          resultado.innerHTML = `
+Provincia: ${provincia}
+Tipo de instalación: ${textoInst}
+Superficie necesaria: ${superficie} m²
+Cantidad de paneles: ${cant}
+Potencia al mediodía en ${datos.mes_vrn}: ${kW} kW
+Potencia al mediodía en ${datos.mes_nvrn}: ${kW_nv} kW
+Energía anual estimada: ${MWh} MWh
+Costo estimado: USD ${costo.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+          `;
+        }
+      }
+    });
+  </script>
+
+  <br>
+  <a href="index.html" class="boton">Volver al inicio</a>
+<br>
+<br>
+<div class="linea-negra"></div>
+</body>
+  
+<footer>La información contenida en esta página es sólo referencial y no es apta para uso comercial</footer>
+</html>
