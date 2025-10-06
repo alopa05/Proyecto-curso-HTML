@@ -6,7 +6,7 @@ Este proyecto es una página web básica desarrollada como parte de un curso de 
 2) se insertaron videos
 3) se usaron subtítulos
 4) se utilizó una lista
-5) se utlizó elementos en línea (ej: strong)
+5) se utlizaron elementos en línea (ej: strong)
 6) se utilizaron estilos
 7) CSS en linea
 8) CSS externo
@@ -14,5 +14,6 @@ Este proyecto es una página web básica desarrollada como parte de un curso de 
 10) Google fonts
 11) Etiquetas de encabezado (H1)
 12) Formulario con vinculación a Formspree
+
 
 
