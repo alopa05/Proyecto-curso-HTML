@@ -9,11 +9,12 @@ Este proyecto es una página web básica desarrollada como parte de un curso de 
 5) se utilizaron elementos en línea (ej: strong)
 6) se utilizaron estilos
 7) CSS en linea y externo
-8) selectores básicos y de etiqueta
+8) Selectores básicos y de etiqueta
 9) Google fonts
 10) Etiquetas de encabezado (H1)
 11) Formulario con vinculación a Formspree
 12) Enlaces hacia páginas externas
+
 
 
 
