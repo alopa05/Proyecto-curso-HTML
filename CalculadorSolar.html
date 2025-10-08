@@ -55,7 +55,7 @@
     mantenerse entre filas para que la sombra que proyecta una fila sobre su inmediata posterior, 
   no afecte significativamente la generación. La siguiente imagen muestra un ejemplo de este tipo de
   instalación:
-  <center> <img src="img/piso.jpg" width="1000"> </center> </li>
+  <center> <img src="img/piso.jpg"> </center> </li>
 <br>
   <li><strong>Sobre techo:</strong> cuando se instalan paneles en el techo la orientación de este puede
     no ser la óptima (hacia el norte), y la inclinación tampoco ser la óptima (depende de cada provincia).
@@ -64,18 +64,22 @@
     La siguiente imagen muestra un ejemplo de este tipo de instalación:
     <center><img src="img/techo.jpg" width="1000"></center></li>
   </ul>
-<br>
+
 <p>Según los datos con los que se cuente, será la información que suministre el calculador como resultado. 
   Los datos involucrados son los siguientes:
 </p>
 <ul>
+  <li><strong>Dato que condiciona el diseño:</strong> elegir la superficie disponible si se supone que
+    ese será el factor limitante. En el caso de que se pretenda un ahorro en la factura, elegir "Energía
+    en MWh anual". La alternativa restante es la potencia en kW pretendida al mediodía en verano.</li>
+    <br>
   <li><strong>Cantidad de paneles:</strong> se consideran paneles solares fotovoltáicos de aprox. 25% de 
     rendimiento. Se trata de la cantidad de paneles necesaria para obtener el resultado solicitado"</li>
     <br>
   <li><strong>Superficie:</strong> es la superficie que ocuparán los paneles. En el caso de instalación sobre
     piso, se incluye la separación entre filas por tema sombras. En ambos casos sobre piso y techo se incluye
     espacio necesario para poder efectuar la instalación (tendido de cables, fijación de soportes, etc.).</li>
-  <br>
+    <br>
   <li><strong>Energía:</strong> es la energía promedio acumulada en MWh (Mega Watts Hora) a lo largo del año producida
     por el generador solar. </li>
     <br>
@@ -127,7 +131,7 @@
     <option value="t">Techo - coplanar</option>
   </select>
 
-  <label for="datoEntrada">¿Cuál es el dato suministrado por el cliente?</label>
+  <label for="datoEntrada">Dato que condiciona el diseño</label>
   <select id="datoEntrada">
     <option value="">-- Seleccione --</option>
     <option value="a">Superficie disponible en m²</option>
@@ -289,6 +293,4 @@ Costo estimado: USD ${costo.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
 </body>
   
 <footer>La información contenida en esta página es sólo referencial y no es apta para uso comercial</footer>
-
 </html>
-
