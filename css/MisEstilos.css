@@ -70,23 +70,23 @@ nav ul li a:hover {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 15px;
-    background-color: #bbb;
-    border: none;
+    background-color: #E6F545;
+    border-color: black;
     border-radius: 5px;
     text-decoration: none;   /* quita subrayado */
     color: black;
     cursor: pointer;
-    
+    border: 2px solid black;
 }
 
 .boton:hover {
-    background-color: #bbb;
+    background-color: #E6F545;
     font-weight: bold;}
 
 button {
     padding: 8px 15px;
     background-color: lightgray;
-    border: none;
+    border-color:black;
     border-radius: 4px;
     font-size: 18px;
     cursor: pointer;
@@ -98,9 +98,43 @@ button:hover {
     background-color: lightgray;
     font-weight: bold;  /* texto en negrita */
 }    
-video::cue {
+video::cue { /* formateo los subtítulos de los videos */
   font-size: 18px;
   color: yellow;
   background: rgba(0, 0, 0, 0.9);
 }
-  
+
+.formulario { width: auto
+    height: auto; 
+    background-color: #E6F545;   
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 6px;
+    padding: 30px;
+}
+
+.indice {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: space-around;
+ align-items: center;
+}
+
+ .item {
+      background-color: #E6F545;      /* color del ítem */
+      color:black;                   /* color del texto */
+      padding: 10px;                  /* espacio interno */
+      margin: 10px;                   /* espacio entre ítems */
+      border-radius:8px;             /* esquinas redondeadas */
+      font-size: 18px;
+      border: 2px solid black;
+}
+
+.item a {
+  color: inherit;           /* usa el color del .item */
+  text-decoration: none;    /* quita el subrayado */
+}
+
+.item:hover {
+    font-weight: bold;  /* texto en negrita */
+}
