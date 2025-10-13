@@ -6,26 +6,21 @@
   <title>Calculador Solar</title>
   <link rel="stylesheet" href="css/MisEstilos.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 20px;
-      font-size: 16px;
-    }
+    body 
     label, select, input {
       display: block;
       margin: 10px 0;
     }
     #resultado {
       margin-top: 20px;
-      padding: 15px;
+      padding: 5px;
       background-color: black;
       color:yellow;
       border-radius: 8px;
       box-shadow: 0 0 6px rgba(0,0,0,0.1);
-      min-height: 120px;
+      min-height: 100px;  
       white-space: pre-wrap;
       font-size: 15px;
     }
@@ -88,9 +83,7 @@
     (tipicamente verano) y el mes de menor insolación (típicamente invierno). Estos meses NO son los mismos
     en todas las provincias. </li>
     <br>
-   <li><strong>Costo:</strong> El costo es aproximado,  Los costos incluyen supervisión, alojamiento, logística, 
-    fletes, etc. por lo que resulta más cercano a la realidad para instalaciones que requieran más de 50
-    paneles solares.</li> 
+  
 </ul>
 
 <div class="linea-negra"></div>
@@ -218,7 +211,6 @@ Cantidad de paneles: ${cant}
 Potencia al mediodía en ${datos.mes_vrn}: ${kW_v} kW
 Potencia al mediodía en ${datos.mes_nvrn}: ${kW_nv} kW
 Energía anual estimada: ${MWh} MWh
-Costo estimado: USD ${costo.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
           `;
 
         } else if (dato === "b") {
@@ -244,7 +236,6 @@ Cantidad de paneles: ${cant}
 Potencia al mediodía en ${datos.mes_vrn}: ${kW_v} kW
 Potencia al mediodía en ${datos.mes_nvrn}: ${kW_nv} kW
 Energía anual estimada: ${MWh} MWh
-Costo estimado: USD ${costo.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
           `;
         } else if (dato === "c") {
           const kW = parseFloat(valor);
@@ -278,7 +269,6 @@ Cantidad de paneles: ${cant}
 Potencia al mediodía en ${datos.mes_vrn}: ${kW} kW
 Potencia al mediodía en ${datos.mes_nvrn}: ${kW_nv} kW
 Energía anual estimada: ${MWh} MWh
-Costo estimado: USD ${costo.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
           `;
         }
       }
