@@ -145,4 +145,9 @@ video::cue { /* formateo los subtítulos de los videos */
 
 .item:hover {
     font-weight: bold;  /* texto en negrita */
+
+}
+.video-centrado {
+  text-align: center; /* centra el contenido inline-block del div */
+      /* opcional: espacio arriba y abajo */
 }
