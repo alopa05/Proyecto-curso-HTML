@@ -15,6 +15,9 @@ Este proyecto es una página web básica desarrollada como parte de un curso de 
 11) Formulario con vinculación a Formspree
 12) Enlaces hacia páginas externas
 13) Contenedores Flexbox
+14) Background (color)
+    
+
 
 
 
