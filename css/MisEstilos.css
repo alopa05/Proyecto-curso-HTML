@@ -151,3 +151,36 @@ video::cue { /* formateo los subtítulos de los videos */
   text-align: center; /* centra el contenido inline-block del div */
       /* opcional: espacio arriba y abajo */
 }
+
+.imagen-ajustada {
+  width: 100%; 
+  height: auto;   /* mantiene las proporciones */
+  max-width: 60%; /* evita que la imagen se agrande más del ancho del contenedor */
+  }
+
+@media (max-width: 740px) {
+  .imagen-ajustada {
+    max-width: 100% !important;
+  }
+}
+
+.container-index {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: space-around;
+ align-items: center;
+}
+
+.item-index img { /* si no agrego este bloque el borde inferior de la imagen sale más grueso que el superior */
+  display: block;         /* elimina espacio bajo la imagen */
+  width: 100%;
+  height: auto;
+  border-radius: 6px;     /* para que acompañe el radio del contenedor */
+}
+.item-index {
+      background-color: black;      /* color del ítem */
+      padding: 5px;                  /* espacio interno */
+      margin: 5px;                   /* espacio entre ítems */
+      border-radius:8px;             /* esquinas redondeadas */
+     
