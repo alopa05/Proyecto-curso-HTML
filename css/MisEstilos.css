@@ -183,4 +183,10 @@ video::cue { /* formateo los subtítulos de los videos */
       padding: 5px;                  /* espacio interno */
       margin: 5px;                   /* espacio entre ítems */
       border-radius:8px;             /* esquinas redondeadas */
-     
+}
+
+#valorEntrada {
+  width: 100%;          /* ocupa todo el ancho del contenedor */
+  max-width: 250px;     /* opcional, limita el tamaño en pantallas grandes */
+  box-sizing: border-box; /* evita que padding o borde recorten el texto */
+}
